@@ -1,6 +1,7 @@
 let x = "0";
 let operator = "";
 let y = "";
+let negate = false;
 let z = "";
 
 function calculate1(value) {
@@ -15,7 +16,39 @@ function calculate1(value) {
     }
 
     if (value === "<--") {
-      x = x.slice(0, -1);
+      if ("/\b\.\d\b/g") {//TODO
+        x = x.slice(0, -2);
+      } else{
+        x = x.slice(0, -1);
+      } 
+      document.getElementById("calScreen2").innerText = x;
+      if (x === "") {
+        x = "0";
+        document.getElementById("calScreen2").innerText = x;
+      }
+      return;
+    }
+
+    if (value === "+/-") {
+      if (negate) {
+        negate = false;
+      } else {
+        negate = true;
+      }
+
+      if (negate) {
+        if (x === "") {
+          x = "-0";
+        } else {
+          x = "-" + x;
+        }
+      } else {
+        if (x === "-0") {
+          x = x.replace("-", "");
+        } else {
+          x = x.replace("-", "");
+        }
+      }
       document.getElementById("calScreen2").innerText = x;
       return;
     }
@@ -87,4 +120,10 @@ if (operator === "") {
   document.getElementById("buttonBack").addEventListener("click", function () {
     calculate1(document.getElementById("buttonBack").innerText);
   });
+
+  document
+    .getElementById("buttonNegate")
+    .addEventListener("click", function () {
+      calculate1(document.getElementById("buttonNegate").innerText);
+    });
 }
