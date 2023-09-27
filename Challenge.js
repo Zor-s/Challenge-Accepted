@@ -8,7 +8,7 @@ function calculate1(value) {
   if (value === "CE") {
     // clears everything
     x = "0";
-    document.getElementById("calScreen2").innerText = x;
+    document.getElementById("calScreen").innerText = x;
   } else {
     if (x === "0") {
       // removes the first 0 after typing a number
@@ -16,15 +16,15 @@ function calculate1(value) {
     }
 
     if (value === "<--") {
-      if ("/\b\.\d\b/g") {//TODO
+      if (x.match(/\.\d(?!\d)/g)) {
         x = x.slice(0, -2);
-      } else{
+      } else {
         x = x.slice(0, -1);
-      } 
-      document.getElementById("calScreen2").innerText = x;
+      }
+      document.getElementById("calScreen").innerText = x;
       if (x === "") {
         x = "0";
-        document.getElementById("calScreen2").innerText = x;
+        document.getElementById("calScreen").innerText = x;
       }
       return;
     }
@@ -49,18 +49,18 @@ function calculate1(value) {
           x = x.replace("-", "");
         }
       }
-      document.getElementById("calScreen2").innerText = x;
+      document.getElementById("calScreen").innerText = x;
       return;
     }
 
     x += value;
-    document.getElementById("calScreen2").innerText = x;
+    document.getElementById("calScreen").innerText = x;
   }
 }
 
 if (operator === "") {
   document.getElementById("buttonZero").addEventListener("click", function () {
-    if (document.getElementById("calScreen2").innerText !== "0") {
+    if (document.getElementById("calScreen").innerText !== "0") {
       calculate1(document.getElementById("buttonZero").innerText);
     }
   });
