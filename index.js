@@ -114,12 +114,11 @@ document.getElementById("buttonCE").addEventListener("click", function () {
   calculate1(document.getElementById("buttonCE").innerText);
 });
 document.getElementById("buttonDecimal").addEventListener("click", function () {
-    if (x === "0") {
-      calculate1("0" + document.getElementById("buttonDecimal").innerText);
-    } else {
-      calculate1(document.getElementById("buttonDecimal").innerText);
-    }
-  
+  if (x === "0") {
+    calculate1("0" + document.getElementById("buttonDecimal").innerText);
+  } else {
+    calculate1(document.getElementById("buttonDecimal").innerText);
+  }
 });
 
 document.getElementById("buttonBack").addEventListener("click", function () {
