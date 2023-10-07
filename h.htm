@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function countDots(str) {
+    let matches = str.match(/\./g);
+    return matches ? matches.length <= 2 : true;
+}
+
+let testStr = "your.string.h.ere";
+console.log(countDots(testStr));  // This will return true if there are 2 or fewer '.' characters
+
+    </script>
+</body>
+</html>
